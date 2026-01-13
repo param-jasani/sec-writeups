@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Security Writeups',
   tagline: 'HTB Sherlocks & LetsDefend',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon-terminal.svg',
 
   url: 'https://param-jasani.github.io',
   baseUrl: '/sec-writeups/',
