@@ -1,0 +1,431 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima with some cleanups and vanilla CSS.
+ */
+
+/* Import Google Font 'Outfit' for a modern feel */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+/* Import 'Fira Code' for code blocks and terminal vibes */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Typography */
+  --ifm-font-family-base: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-font-family-monospace: 'Fira Code', monospace;
+
+  /* Apple-esque Colors (Clean, Neutral, Vibrant Accents) */
+  --ifm-color-primary: #0071e3;
+  /* Apple Blue */
+  --ifm-color-primary-dark: #0066cc;
+  --ifm-color-primary-darker: #0060c2;
+  --ifm-color-primary-darkest: #004f9e;
+  --ifm-color-primary-light: #298dff;
+  --ifm-color-primary-lighter: #3d98ff;
+  --ifm-color-primary-lightest: #7abcff;
+
+  --ifm-background-color: #f5f5f7;
+  /* Apple Light Grey */
+  --ifm-background-surface-color: #ffffff;
+
+  /* Accents */
+  --color-accent-amber: #F59E0B;
+  --color-accent-teal: #10B981;
+  --color-accent-red: #EF4444;
+}
+
+/* Dark Mode Colors - Deep Space Grey */
+/* Dark Mode Colors - Deep Space Grey / Cyber */
+/* Dark Mode Colors - Premium Midnight Blue */
+[data-theme='dark'] {
+  --ifm-color-primary: #60a5fa;
+  /* Premium Royal Blue */
+  --ifm-color-primary-dark: #3b82f6;
+  --ifm-color-primary-darker: #2563eb;
+  --ifm-color-primary-darkest: #1d4ed8;
+  --ifm-color-primary-light: #93c5fd;
+  --ifm-color-primary-lighter: #bfdbfe;
+  --ifm-color-primary-lightest: #dbeafe;
+
+  --ifm-background-color: #020617;
+  /* Deepest Midnight Navy */
+  --ifm-background-surface-color: #0f172a;
+  /* Slate 900 - Rich Dark Blue Surface */
+
+  --ifm-menu-color: #e2e8f0;
+  --ifm-color-content: #f1f5f9;
+}
+
+/* Global Styles */
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Navbar */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .navbar {
+  background-color: rgba(2, 6, 23, 0.85);
+  /* Midnight Glass */
+  border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+  /* Subtle Blue Border */
+}
+
+/* Navbar Title Styling - Minimal Professional */
+.navbar__title {
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+  font-size: 1.1rem;
+  /* Gradient Text */
+  background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-primary-lightest));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  letter-spacing: -0.5px;
+}
+
+/* Blinking Cursor */
+.navbar__title::after {
+  content: '_';
+  color: var(--ifm-color-primary);
+  -webkit-text-fill-color: var(--ifm-color-primary);
+  animation: blink 1s step-end infinite;
+  display: inline-block;
+  margin-left: 2px;
+}
+
+/* Hide Logo Image to rely on Text */
+.navbar__brand .navbar__logo {
+  display: none;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Buttons - Apple Style Pills */
+.button {
+  border-radius: 980px;
+  /* Pill shape */
+  padding: 12px 24px;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.button--primary {
+  background: var(--ifm-color-primary);
+  border: none;
+  color: #fff;
+}
+
+[data-theme='dark'] .button--primary {
+  background: #3b82f6;
+  /* Royal Blue */
+  color: #fff;
+  font-weight: 500;
+}
+
+.button--primary:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .button--primary:hover {
+  background: #60a5fa;
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+  /* Premium Blue Glow */
+}
+
+.button--secondary {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--ifm-color-emphasis-900);
+  border: none;
+}
+
+[data-theme='dark'] .button--secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e6edf3;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.button--secondary:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+}
+
+[data-theme='dark'] .button--secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Hero Section - Mesh Gradient Fluid Background */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: transparent;
+  /* Let body bg show through or use specific bg */
+  z-index: 1;
+}
+
+/* Fluid Animation Blobs */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  filter: blur(80px);
+  /* Extreme blur for fluid effect */
+  z-index: -1;
+  opacity: 0.6;
+  animation: moveBlob 10s infinite alternate ease-in-out;
+}
+
+/* Blob 1 */
+.hero::before {
+  top: -10%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(41, 151, 255, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+[data-theme='dark'] .hero::before {
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
+  /* Deep Royal Blue */
+}
+
+/* Blob 2 - Cyan/Blue */
+.hero::after {
+  bottom: -10%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(0, 198, 255, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
+  animation-delay: -5s;
+}
+
+[data-theme='dark'] .hero::after {
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+  /* Sky Blue Complement */
+}
+
+@keyframes moveBlob {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(20px, -20px) scale(1.1);
+  }
+}
+
+.hero__title {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.005em;
+  background: linear-gradient(135deg, var(--ifm-color-emphasis-900), var(--ifm-color-emphasis-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme='dark'] .hero__title {
+  background: linear-gradient(135deg, #dbeafe 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+}
+
+.hero__subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.8rem);
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 3rem;
+  font-weight: 400;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  /* Start hidden for animation */
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+/* Sidebar & Doc Styling */
+.theme-doc-sidebar-container {
+  border-right: none;
+  background: var(--ifm-background-color);
+  /* Match body bg */
+}
+
+
+/* Premium Admonitions / Alerts */
+.alert {
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.alert__heading {
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Success (Tip) - Premium Neon Green */
+.alert--success {
+  --ifm-alert-background-color: rgba(16, 185, 129, 0.1);
+  --ifm-alert-border-color: #10b981;
+}
+
+[data-theme='dark'] .alert--success {
+  background: linear-gradient(100deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-left: 4px solid #34d399;
+  /* Neon Emerald */
+  box-shadow: 0 8px 32px rgba(16, 185, 129, 0.1);
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .alert--success .alert__heading {
+  color: #34d399;
+}
+
+/* Info (Note) - Premium Blue */
+.alert--info {
+  --ifm-alert-background-color: rgba(56, 189, 248, 0.1);
+  --ifm-alert-border-color: #38bdf8;
+}
+
+[data-theme='dark'] .alert--info {
+  background: linear-gradient(100deg, rgba(56, 189, 248, 0.15) 0%, rgba(56, 189, 248, 0.05) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-left: 4px solid #38bdf8;
+  box-shadow: 0 8px 32px rgba(56, 189, 248, 0.1);
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .alert--info .alert__heading {
+  color: #38bdf8;
+}
+
+/* Warning - Premium Amber */
+.alert--warning {
+  --ifm-alert-background-color: rgba(245, 158, 11, 0.1);
+  --ifm-alert-border-color: #fbbf24;
+}
+
+[data-theme='dark'] .alert--warning {
+  background: linear-gradient(100deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.05) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-left: 4px solid #fbbf24;
+  box-shadow: 0 8px 32px rgba(245, 158, 11, 0.1);
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .alert--warning .alert__heading {
+  color: #fbbf24;
+}
+
+/* Danger - Premium Red */
+.alert--danger {
+  --ifm-alert-background-color: rgba(239, 68, 68, 0.1);
+  --ifm-alert-border-color: #f87171;
+}
+
+[data-theme='dark'] .alert--danger {
+  background: linear-gradient(100deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.05) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-left: 4px solid #f87171;
+  box-shadow: 0 8px 32px rgba(239, 68, 68, 0.1);
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .alert--danger .alert__heading {
+  color: #f87171;
+}
+
+/* Fluid Custom Scrollbar */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ifm-color-primary) transparent;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(160, 160, 160, 0.3);
+  border-radius: 20px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--ifm-color-primary);
+}
