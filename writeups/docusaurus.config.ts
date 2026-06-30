@@ -22,6 +22,10 @@ const config: Config = {
     locales: ['en'],
   },
 
+  stylesheets: [
+    'https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap',
+  ],
+
   presets: [
     [
       'classic',
@@ -32,13 +36,7 @@ const config: Config = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -73,7 +71,12 @@ const config: Config = {
           position: 'left',
           label: 'LetsDefend',
         },
-        { to: '/blog', label: 'Blog', position: 'right' },
+        {
+          type: 'docSidebar',
+          sidebarId: 'crackmeSidebar',
+          position: 'left',
+          label: 'Crackme',
+        },
         {
           href: 'https://github.com/param-jasani/',
           label: 'GitHub',
@@ -94,6 +97,10 @@ const config: Config = {
             {
               label: 'LetsDefend',
               to: '/docs/Lets-Defend',
+            },
+            {
+              label: 'Crackme',
+              to: '/docs/Crackme',
             },
           ],
         },
