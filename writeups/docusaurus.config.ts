@@ -9,6 +9,16 @@ const config: Config = {
 
   url: 'https://param-jasani.github.io',
   baseUrl: '/sec-writeups/',
+  
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'google-site-verification',
+        content: 'cEgdu3-GJrjUA4TQDBwpY4yDWjj0d0XHYeLrGvSZOvc',   // ← Replace this
+      },
+    },
+  ],
 
   organizationName: 'param-jasani',
   projectName: 'sec-writeups',
